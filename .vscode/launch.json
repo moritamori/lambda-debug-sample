@@ -1,0 +1,32 @@
+{
+    "configurations": [
+
+        {
+            "name": "SAMでデバッグ",
+            "type": "go",
+            "request": "attach",
+            "mode": "remote",
+            "port": 8099,
+            "host": "localhost",
+            "env": {},
+            "args": []
+        },
+        {
+			"name": "SAMでデバッグ2",
+			"type": "aws-sam",
+			"request": "direct-invoke",
+			"invokeTarget": {
+				"target": "template",
+				"templatePath": "${workspaceFolder}/template.yml",
+				"logicalId": "HelloGopher"
+			},
+			"lambda": {
+				"payload": {
+                    "path": "event.json"
+                    // "json": { "name": "HogeHoge" },
+                },
+				"environmentVariables": {}
+			}
+		},
+    ]
+}
